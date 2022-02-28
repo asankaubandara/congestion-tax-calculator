@@ -195,7 +195,8 @@ public class TaxService {
 		LocalDateTime localDate = convertToLocalDateTimeViaMilisecond(date);
 
 		int year = localDate.getYear();
-
+		
+		// can we also add to db config for each city
 		if (localDate.getDayOfWeek() == DayOfWeek.SATURDAY || localDate.getDayOfWeek() == DayOfWeek.SUNDAY)
 			return true;
 
@@ -206,6 +207,7 @@ public class TaxService {
 			for (Holiday holiday : holidayList) {
 
 				LocalDateTime startDate = convertToLocalDateTimeViaMilisecond(holiday.getDate());
+				// can we also add to db config for each city
 				LocalDateTime beforeDate = startDate.minusDays(DAYS_BEFORE_HOLIDAY);
 
 				// check holiday with public holidays, days before a public holiday
@@ -217,6 +219,7 @@ public class TaxService {
 			}
 
 			return isHoliday;
+		// can we also add to db config for each city
 		} else if (localDate.getMonth() == Month.JULY) {
 			// during the month of July
 			isHoliday = true;
